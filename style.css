@@ -20,5 +20,8 @@ body{
     box-sizing: border-box;
     height: 6.25%;
     flex-basis: 6.25%;
-    border: 1px solid black;
+    border: 1px solid rgb(0, 0, 0);
+}
+.hover{
+    background-color: black;
 }
