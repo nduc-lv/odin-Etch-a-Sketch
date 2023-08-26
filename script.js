@@ -6,19 +6,32 @@ for (let i = 0; i < size; i++){
     divSquare.classList.add(`div-square`);
     container.appendChild(divSquare);
 }
+//make random color
+function makeColor(){
+    return Math.floor(Math.random() * 256);
+}
 //make square div change color when be hovered on
-function addHover(){
+function addHoverEffect(){
+
    let squareDivs = document.querySelectorAll(`.div-square`);
     for (let i = 0; i < squareDivs.length; i++){
         squareDivs[i].addEventListener(`mouseenter`, () => {
-            squareDivs[i].classList.toggle('hover');
+            let red = makeColor();
+            let blue = makeColor();
+            let green = makeColor();
+            let opacity = Math.random();
+            squareDivs[i].style.backgroundColor = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
         })
         squareDivs[i].addEventListener('mouseleave', () => {
-            setTimeout(() => {squareDivs[i].classList.toggle('hover')}, 200);
+            setTimeout(() => {
+                squareDivs[i].style.backgroundColor = 'white'; 
+            }, 500)
         })
-    } 
+        
+    }
+ 
 }
-addHover();
+addHoverEffect();
 //create a new existing grid when the user add squares
 //prompt the user for number of squares per side
 //remove old grid
@@ -30,7 +43,7 @@ button.addEventListener('click', () => {
     //prompt the user for the number of square per side
     let squaresPerSide = 0;
     do {
-        squaresPerSide = prompt('Number of squares per side?',``);
+        squaresPerSide = prompt('Number of squares per side? (from 1 to 99)',``);
         if (typeof +squaresPerSide  == `number` && 0 < squaresPerSide  && squaresPerSide < 100){
             break;
         }
@@ -47,5 +60,5 @@ button.addEventListener('click', () => {
         divSquare.setAttribute('style', `flex-basis: ${size}%; height: ${size}%`);
         container.appendChild(divSquare);
     }
-    addHover();
+    addHoverEffect();
 });
